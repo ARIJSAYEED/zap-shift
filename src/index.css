@@ -4,8 +4,10 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-   themes: light --default;
-};
+  themes: light --default;
+}
+
+;
 
 @plugin "daisyui/theme" {
   name: "light";
@@ -13,10 +15,20 @@
   --color-primary: #CAEB66;
   --color-secondary: #03373D;
   --color-primaryblack: #303030;
+  --color-heading: #03373D;
 }
 
-body{
+body {
   font-family: "Urbanist", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+a.active {
+  background-color: #CAEB66;
+}
+
+.react-tabs__tab--selected{
+  color: #5B6A2E;
+  font-weight: 800;
 }

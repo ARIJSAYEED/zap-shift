@@ -7,7 +7,7 @@ const Ourservices = () => {
                 <h1 className='text-[40px] font-extrabold text-white capitalize'>our services</h1>
                 <p className='text-[16px] font-thin text-white'>Enjoy fast, reliable parcel delivery with real-time tracking and zero hassle. From personal packages to <br />business shipments — we deliver on time, every time.</p>
             </div>
-            <div className='grid grid-cols-3 gap-6'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-1 gap-6'>
                 {/* cards  */}
                 <div className='flex flex-col justify-center items-center space-y-6 p-8 bg-white hover:bg-primary rounded-3xl text-center'>
                     <div className='p-6 rounded-full bg-linear-to-b from-white'>

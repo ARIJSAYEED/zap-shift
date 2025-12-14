@@ -1,16 +1,56 @@
 import React from 'react';
 import Logo from './Logo';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { LuArrowUpRight } from 'react-icons/lu';
+import useAuth from '../Hooks/useAuth';
 
 const NavBar = () => {
+    const { user, logOut } = useAuth();
+    const handleSignOut = () => {
+        logOut()
+    }
     const links = <>
-        <li><NavLink>services</NavLink></li>
-        <li><NavLink>coverage</NavLink></li>
-        <li><NavLink>about us</NavLink></li>
-        <li><NavLink>pricing</NavLink></li>
-        <li><NavLink>blog</NavLink></li>
-        <li><NavLink>contact</NavLink></li>
+        <NavLink
+            to='/services'
+            className='p-2 rounded-sm'
+        >
+            services
+        </NavLink>
+
+        <NavLink
+            to='/coverage'
+            className='p-2 rounded-sm'
+        >
+            coverage
+        </NavLink>
+
+        <NavLink
+            to='/about-us'
+            className='p-2 rounded-sm'
+        >
+            about us
+        </NavLink>
+
+        <NavLink
+            to='/pricing'
+            className='p-2 rounded-sm'
+        >
+            pricing
+        </NavLink>
+
+        <NavLink
+            to='/blog'
+            className='p-2 rounded-sm'
+        >
+            blog
+        </NavLink>
+
+        <NavLink
+            to='/contact'
+            className='p-2 rounded-sm'
+        >
+            contact
+        </NavLink>
     </>
     return (
         <div className='sticky top-0 z-50'>
@@ -26,22 +66,30 @@ const NavBar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">
+                    <div>
                         <Logo></Logo>
-                    </a>
+                    </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 capitalize">
                         {links}
                     </ul>
                 </div>
-                <div className="navbar-end capitalize">
-                    <a className="btn border-neutral-300">sign in</a>
-                    <a className="btn bg-primary ml-3">sign up</a>
-                    <a className="btn text-primary text-3xl p-1 rounded-full bg-secondary">
-                        <LuArrowUpRight />
-                    </a>
-                </div>
+                {
+                    user ?
+
+                        <div className="navbar-end capitalize">
+                            <Link onClick={handleSignOut} className="btn bg-primary ml-3">sign out</Link>
+                        </div>
+                        :
+                        <div className="navbar-end capitalize">
+                            <Link to='/auth/login' className="btn border-neutral-300">sign in</Link>
+                            <Link to='/auth/register' className="btn bg-primary ml-3">sign up</Link>
+                            <Link to='/auth/register' className="btn text-primary text-3xl p-1 rounded-full bg-secondary">
+                                <LuArrowUpRight />
+                            </Link>
+                        </div>
+                }
             </div>
         </div>
     );
